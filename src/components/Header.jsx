@@ -28,8 +28,7 @@ function Header() {
                 <li className='navbarListItem'>
                 <NavLink
                     to="/"
-                    style={({ isActive }) => isActive ? activeStyle : undefined}
-                >
+                    style={({ isActive }) => isActive ? activeStyle : undefined} end>
                 Accueil
                 </NavLink></li>
                 <li className='navbarListItem'>
