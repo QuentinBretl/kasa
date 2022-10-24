@@ -2,15 +2,21 @@
   --primary:#FF6060;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
 
+*{
+  margin: 0;
+  padding: 0;
+}
 body {
-  margin: 30px;
   font-family: 'Montserrat', sans-serif, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  font-size: 500;
+  margin: 0;
 }
 
 code {
@@ -22,12 +28,29 @@ a{
   color: var(--primary)
 }
 
+#root{
+ display:flex; 
+ flex-direction:column;
+ justify-content: space-between;
+ min-height: 110vh;
+}
+
 .navbar{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100px;
+  box-sizing: border-box;
+
+}
+
+.header-container{
+  display: flex;
+  width: 100%;
+  margin: 60px;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .active{
@@ -35,14 +58,201 @@ a{
 }
 
 .navbarNav{
-  width: 300px;
+  width: 250px;
 }
 
 .navbarListItems{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   list-style-type: none;
   font-size: 1.1em;
   color: var(--primary);
   
 }
+
+main {
+  margin: 30px 60px;
+}
+
+.banner{
+    height: 11rem;
+    border-radius: 10px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-color: #595959;
+    background-blend-mode: overlay;
+    background-size: 100% 100%;
+    margin-bottom: 5rem;
+    margin-top: 2rem;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.banner-title{
+  color: white;
+  font-size: 28px;
+}
+
+.listing{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.listing:after {
+  width: 30%;
+  content: "";
+}
+.card{
+  position: relative;
+  width: 30%;
+  height: 300px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  background-size: cover;
+}
+
+.card-link{
+  height: 100%;
+  width: 100%;
+}
+
+
+.accomodation-title{
+  position: absolute;
+  color: white;
+  bottom: 8px;
+  left: 16px;
+}
+
+.footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color:#000;
+  height: 210px;
+}
+
+.fixed{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.footer-logo{
+  margin-top: 70px;
+}
+
+.footer-text{
+  font-size: 20px;
+  color:#ffffff;
+}
+
+.dropdown{
+  margin: auto;
+  width: 80%;
+}
+
+.dropdown-short{
+  width: 50%;
+}
+
+.dropdown-heading{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 35px;
+  background-color: var(--primary);
+  border-radius: 5px;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.dropdown-heading:hover{
+  cursor: pointer;
+}
+
+.dropdown-title{
+  color: #ffffff;
+  font-size: 17px;
+}
+
+.dropdown-container{
+  margin-top: 10px;
+  padding: 15px 15px 0px 15px;
+  color: var(--primary);
+  min-height: 60px;
+  z-index: -1;
+}
+
+.dropdown-content{
+}
+/* ABOUT PAGE */
+
+.about{
+  min-height: 71vh;
+}
+
+/* 404 PAGE */
+
+.not-found{
+  display: flex;
+  justify-content: center;
+  margin-top: -150px;
+}
+.not-found-content{
+  text-align: center;
+} 
+
+.not-found-title{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 288px;
+  color: var(--primary);
+}
+
+.not-found-subtitle{
+  font-size: 30px;
+  font-weight: normal;
+  color: var(--primary)
+}
+
+.not-found-redirection{
+  text-decoration: underline;
+}
+
+.not-found-redirection-text{
+  margin-top: 100px;
+}
+
+/* ANIMATION */
+
+.rotate{
+  transform: rotate(360deg);
+  transition: transform 250ms ease-in-out;
+}
+
+.rotate.out{
+  transform: rotate(180deg);
+  transition: transform 250ms ease-out;
+}
+
+.translate{
+  max-height: 20rem;
+  transition: max-height 0.200s ease-in-out, opacity 0.5s;
+  margin-bottom: 20px;
+}
+
+.translate.out{
+  visibility: hidden;
+  max-height: 0;
+  opacity: 0;
+}
+
