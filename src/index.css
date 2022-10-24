@@ -160,7 +160,7 @@ main {
 }
 
 .dropdown-short{
-  width: 50%;
+  width: 48%;
 }
 
 .dropdown-heading{
@@ -182,6 +182,7 @@ main {
 .dropdown-title{
   color: #ffffff;
   font-size: 17px;
+  font-weight: 500;
 }
 
 .dropdown-container{
@@ -198,6 +199,71 @@ main {
 
 .about{
   min-height: 71vh;
+}
+
+/* PROFILE PAGE */
+
+.slider{
+  width: 100%;
+  height: 35vh;
+  background-color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.profile{
+  min-height: 60vh;
+  margin-top: 0;
+}
+.profile-desc{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.profile-left-desc{
+
+}
+
+
+.profile-title{
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.profile-location{
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.profile-right-desc{
+  display: flex;
+  align-items: center;
+}
+.host{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--primary);
+}
+
+.host-name{
+  text-align: end;
+  width: 40%;
+  font-size: 0.9em;
+  margin-right: 5px;
+}
+
+.host-picture{
+  width: 50px;
+  border-radius: 50%;
+}
+
+.full-desc{
+  display:flex;
+  justify-content: space-between;
+  margin-top: 50px;
 }
 
 /* 404 PAGE */
