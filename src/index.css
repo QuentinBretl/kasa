@@ -241,10 +241,20 @@ main {
   margin-top: 5px;
 }
 
-.profile-right-desc{
+.profile-tags{
   display: flex;
-  align-items: center;
+  font-size: 0.8em;
+  margin-top: 10px;
 }
+
+.tag{
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: white;
+  background-color: var(--primary);
+  margin-right: 10px;
+}
+
 .host{
   display: flex;
   justify-content: flex-end;
@@ -264,6 +274,12 @@ main {
   border-radius: 50%;
 }
 
+.rating-container{
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .full-desc{
   display:flex;
   justify-content: space-between;
@@ -275,7 +291,6 @@ main {
 .not-found{
   display: flex;
   justify-content: center;
-  margin-top: -150px;
 }
 .not-found-content{
   text-align: center;
@@ -326,3 +341,75 @@ main {
   opacity: 0;
 }
 
+@media screen and (max-width: 768px){
+  main{
+    margin: 30px;
+  }
+
+  .header-container{
+    margin: 30px;
+  }
+  .navbar{
+    text-transform: uppercase;
+  }
+
+  .navbarNav{
+    width: 35vw;
+  }
+
+  .footer{
+    height: 180px;
+  }
+
+  .footer-text{
+    margin-top: 5px;
+    font-size: 15px;
+  }
+
+ /* HOME PAGE*/
+  .card{
+    width: 100%;
+    height: 50vh;
+  }
+
+  /* ABOUT PAGE */
+
+  .about{
+    min-height: 50vh;
+  }
+
+  .dropdown{
+    width: 100%;
+  }
+
+  /* 404 PAGE */
+  .not-found-title{
+    font-size: 150px;
+  }
+
+  .not-found-subtitle{
+    font-size: 28px;
+  }
+
+  /* PROFILE PAGE */
+  .profile-desc{
+    flex-direction: column;
+  }
+
+  .profile-right-desc{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .full-desc{
+    flex-direction: column;
+    margin-top: 15px;
+  }
+
+  .dropdown-short{
+    width: 100%;
+  }
+
+}

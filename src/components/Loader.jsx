@@ -1,7 +1,7 @@
 
 function Loader() {
   return (
-    <div>Loader</div>
+    <div>CA CHARGE WESH</div>
   )
 }
 

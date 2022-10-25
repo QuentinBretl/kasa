@@ -4,7 +4,7 @@ const AccomodationContext = createContext();
 
 export const AccomodationProvider = ({ children }) => {
   const [accomodation, setAccomodation] = useState([]);
-  const [currentAcc, setCurrentAcc] = useState(null)
+  let [currentAcc, setCurrentAcc] = useState(null)
 
   useEffect(() => {
     fetchAccomodation();
@@ -26,7 +26,12 @@ export const AccomodationProvider = ({ children }) => {
   const getSingleAccomodation = async (id) => {
     // NOTE: no need to spread data and item
     let current = accomodation.find((item) => item.id === id);
-    setCurrentAcc(current)
+    if(current){
+      setCurrentAcc(current)
+    } else {
+      setCurrentAcc('incorrect')
+    }
+    
     
     // FIX: this fixes being able to add a feedback after editing
     // credit to Jose https://www.udemy.com/course/react-front-to-back-2022/learn/lecture/29768200#questions/16462688
