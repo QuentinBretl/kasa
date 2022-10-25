@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import Dropdown from '../components/shared/Dropdown';
 import Slider from '../components/Slider';
+import Loader from '../components/Loader';
 import AccomodationContext from '../context/AccomodationContext';
 
 function Profile() {
-  const { accomodation, getSingleAccomodation } =
+  const { accomodation, currentAcc, getSingleAccomodation } =
     useContext(AccomodationContext);
-
-  const [currentAcc, setCurrentAcc] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const params = useParams();
@@ -15,37 +15,47 @@ function Profile() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    (async () => {
-      const acc = await getSingleAccomodation(params.listingId);
-      setCurrentAcc(acc);
-    })();
-    setLoading(false);
-    return () => {
-      <div>{currentAcc.title}</div>;
+    const fetching = async () => {
+      console.log(currentAcc);
+      await getSingleAccomodation(params.listingId);
     };
-  }, []);
+    fetching().catch(console.error);
+  }, [getSingleAccomodation]);
 
-  if (loading) {
-    return <div>CA CHARGE FRERE ATTENDS</div>;
-  }
-  return (
-    <main className='profile'>
-      <Slider images />
-      <section className='profile-desc'>
-        <div className='profile-left-desc'>
-          <h1 className='profile-title'>{console.log(currentAcc)}</h1>
-          <h2 className='profile-location'></h2>
-        </div>
-        <div className='profile-right-desc'>
-          <div className='host'>
-            <p className='host-name'></p>
-            <p className='host-picture'></p>
+  if (!currentAcc) {
+    <Loader />;
+  } else {
+    return (
+      <main className='profile'>
+        <Slider slides={currentAcc.pictures} />
+        <section className='profile-desc'>
+          <div className='profile-left-desc'>
+            <h1 className='profile-title'>{currentAcc.title}</h1>
+            <h2 className='profile-location'>{currentAcc.location}</h2>
           </div>
-          <div className='rating'></div>
-        </div>
-      </section>
-    </main>
-  );
+          <div className='profile-right-desc'>
+            <div className='host'>
+              <p className='host-name'>{currentAcc.host.name}</p>
+              <img className='host-picture' src={currentAcc.host.picture} />
+            </div>
+            <div className='rating'></div>
+          </div>
+        </section>
+        <section className='full-desc'>
+          <Dropdown name='Description' long={false}>
+            <p className='dropdown-content'>{currentAcc.description}</p>
+          </Dropdown>
+          <Dropdown name='Équipements' long={false}>
+            {currentAcc.equipments.map((item) => (
+              <p className='dropdown-content' key={item}>
+                {item}
+              </p>
+            ))}
+          </Dropdown>
+        </section>
+      </main>
+    );
+  }
 }
 
 export default Profile;
