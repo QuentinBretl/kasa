@@ -4,7 +4,6 @@ const AccomodationContext = createContext();
 
 export const AccomodationProvider = ({ children }) => {
   const [accomodation, setAccomodation] = useState([]);
-  let [currentAcc, setCurrentAcc] = useState(null);
   let [noMatch, setNoMatch] = useState(false)
 
   useEffect(() => {
@@ -37,7 +36,6 @@ export const AccomodationProvider = ({ children }) => {
     <AccomodationContext.Provider
       value={{
         accomodation,
-        currentAcc,
         noMatch,
         getSingleAccomodation,
       }}

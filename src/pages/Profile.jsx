@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { Link, useNavigate, Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import Dropdown from '../components/shared/Dropdown';
 import Slider from '../components/Slider';
 import Loader from '../components/Loader';
@@ -7,15 +7,12 @@ import Rating from '../components/Rating';
 import AccomodationContext from '../context/AccomodationContext';
 
 function Profile({ children }) {
-  const { accomodation, currentAcc, noMatch, getSingleAccomodation } =
+  const { accomodation, noMatch, getSingleAccomodation } =
     useContext(AccomodationContext);
   const [singleAcc, setSingleAcc] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   
-
   const params = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -64,7 +61,7 @@ function Profile({ children }) {
         <div className='profile-right-desc'>
           <div className='host'>
             <p className='host-name'>{singleAcc.host.name}</p>
-            <img className='host-picture' src={singleAcc.host.picture} />
+            <img className='host-picture' src={singleAcc.host.picture} alt=''/>
           </div>
           <Rating stars={singleAcc.rating} count={5} />
         </div>

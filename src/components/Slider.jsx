@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ReactComponent as LeftArrow } from '../components/assets/left-arrow.svg';
 import { ReactComponent as RightArrow } from '../components/assets/right-arrow.svg';
 
 function Slider({ slides }) {
   //STATES
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [oneSlide, setOneSlide] = useState(false);
+  let button
+  
 
   //STYLES
   const slideStyle = {
@@ -74,20 +75,17 @@ function Slider({ slides }) {
     setCurrentIndex(slideIndex);
   };
 
-  const onePicture = () => {
+  
     if (slides.length !== 1) {
-      const buttons = (
+      button = 
         <>
           <LeftArrow style={LeftArrowStyles} onClick={goToPrevious} />
           <RightArrow style={RightArrowStyles} onClick={goToNext} />
         </>
-      );
     }
-  };
   return (
     <section className='slider'>
-      <LeftArrow style={LeftArrowStyles} onClick={goToPrevious} />
-      <RightArrow style={RightArrowStyles} onClick={goToNext} />
+     {button}
       <div style={slideStyle}></div>
       <div style={dotsContainerStyles}>
         {slides.map((slide, slideIndex) => (

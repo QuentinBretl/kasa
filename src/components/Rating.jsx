@@ -1,8 +1,7 @@
 import {ReactComponent as Star} from '../components/assets/star.svg'
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
 function Rating({stars, count}) {
-    const [rating, setRating] = useState(0)
 
     const getColor = (index) => {
         if(index > parseInt(stars)){
