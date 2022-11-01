@@ -1,8 +1,5 @@
-
 function Loader() {
-  return (
-    <div>CA CHARGE WESH</div>
-  )
+  return <div>CA CHARGE</div>;
 }
 
-export default Loader
+export default Loader;
