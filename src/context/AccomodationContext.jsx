@@ -5,6 +5,7 @@ const AccomodationContext = createContext();
 export const AccomodationProvider = ({ children }) => {
   const [accomodation, setAccomodation] = useState([]);
   let [currentAcc, setCurrentAcc] = useState(null);
+  let [noMatch, setNoMatch] = useState(false)
 
   useEffect(() => {
     fetchAccomodation();
@@ -23,7 +24,13 @@ export const AccomodationProvider = ({ children }) => {
   };
 
   const getSingleAccomodation = async (id) => {
-    return await accomodation.find((item) => item.id === id);
+    let singleData =  await accomodation.find((item) => item.id === id);
+    if(singleData){
+      setNoMatch(false)
+      return singleData
+    } else {
+      setNoMatch(true)
+    }
   };
 
   return (
@@ -31,6 +38,7 @@ export const AccomodationProvider = ({ children }) => {
       value={{
         accomodation,
         currentAcc,
+        noMatch,
         getSingleAccomodation,
       }}
     >
