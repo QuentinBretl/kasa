@@ -7,40 +7,43 @@ import Rating from '../components/Rating';
 import AccomodationContext from '../context/AccomodationContext';
 
 function Profile({ children }) {
-  const { accomodation, noMatch, getSingleAccomodation } =
+  const { accomodation } =
     useContext(AccomodationContext);
   const [singleAcc, setSingleAcc] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [noMatch, setNoMatch] = useState(false)
   
   const params = useParams();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const fetchSingleAcc = async () => {
-      let data = await getSingleAccomodation(params.listingId);
-      if(noMatch){
-        setLoading(false)
-      }
-      if (data) {
-          setSingleAcc(data);
-        }
-    }; 
-    try{
-      fetchSingleAcc();
-      console.log(noMatch);
-    } catch(error){
-      console.log("po bon")
+    if(noMatch){
+      setLoading(false)
     }
+    const fetchSingleAcc = async () => { 
+      if(accomodation.length ===0 ){
+        return
+      }else{
+        let data = await accomodation.find((item) => item.id === params.listingId)
+        if(!data){
+          setNoMatch(true)
+        } else {
+          setSingleAcc(data)
+        }
+      }
+    }
+      fetchSingleAcc();
     
     if (!singleAcc) return;
     else {
       setLoading(false);
     }
-  }, [accomodation, singleAcc, params.listingId]);
+  }, [accomodation, singleAcc, params.listingId, noMatch]);
 
   if (loading) {
     return <Loader />;
-  }
+  } 
+
 
   return (
     noMatch ? <Navigate to="/error" /> : (<main className='profile'>

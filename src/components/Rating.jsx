@@ -1,15 +1,15 @@
 import {ReactComponent as Star} from '../components/assets/star.svg'
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 function Rating({stars, count}) {
 
-    const getColor = (index) => {
+    const getColor = useCallback((index) => {
         if(index > parseInt(stars)){
             return 'lightgrey'
         } else {
             return '#FF6060'
         }
-    }
+    }, [stars])
 
    const StarRating = useMemo(() => {
         return Array(count)
@@ -18,7 +18,7 @@ function Rating({stars, count}) {
         .map( idx => (
             <Star className ='star' key={idx} fill={getColor(idx)}/>
         ));
-   }, [count])
+   }, [count, getColor])
     
     
   return (
